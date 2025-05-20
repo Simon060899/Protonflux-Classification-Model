@@ -287,14 +287,28 @@ def main():
         else:
             df_to_save = df.copy() # Save a copy if nothing to drop
         
-        # Round prediction columns to 2 decimal places
+        # Apply custom rounding: columns with more than 3 decimal places are rounded to 3 decimal places.
+        # Exclude specific columns from this rounding.
+        excluded_columns_for_rounding = ['x(km)', 'y(km)', 'z(km)']
+        print("\nApplying custom rounding to 3 decimal places for applicable columns...")
         for col in df_to_save.columns:
-            if col.startswith('prob_') or col.startswith('high_risk_'):
-                # Ensure column is numeric before rounding to avoid errors with potential non-numeric placeholders
+            if col not in excluded_columns_for_rounding:
                 if pd.api.types.is_numeric_dtype(df_to_save[col]):
-                    df_to_save[col] = df_to_save[col].round(2)
-                else:
-                    print(f"Warning: Column '{col}' is not numeric and will not be rounded.")
+                    # Create a Series of non-NaN values to check for rounding necessity
+                    non_na_values = df_to_save[col].dropna()
+                    if not non_na_values.empty:
+                        # Check if any value changes when rounded to 3 decimal places
+                        # This indicates that the column has values with more than 3 decimal places
+                        needs_rounding = (non_na_values != non_na_values.round(3)).any()
+                        if needs_rounding:
+                            print(f"Rounding column '{col}' to 3 decimal places.")
+                            df_to_save[col] = df_to_save[col].round(3)
+                        # else:
+                            # print(f"Column '{col}' ('{df_to_save[col].dtype}') does not require rounding to 3 decimal places.")
+                # else:
+                    # print(f"Column '{col}' is not numeric and will not be processed for rounding.")
+            # else:
+                # print(f"Column '{col}' is explicitly excluded from custom rounding.")
 
         df_to_save.to_csv(output_prediction_file)
         print(f"\\nSuccessfully saved DataFrame with predictions to: {output_prediction_file}")
