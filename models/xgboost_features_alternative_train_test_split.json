@@ -1,0 +1,1 @@
+["Pdyn", "F107", "FootType", "|z|", "rdist", "x*y", "x*F107", "x*|z|", "x*rdist", "x*Dst_index", "y*VxSW_GSE", "y*Pdyn", "y*|z|", "y*AE_index", "y*Dst_index", "VxSW_GSE*rdist", "VxSW_GSE*Dst_index", "Pdyn*FootType", "Pdyn*|z|", "Pdyn*rdist", "Pdyn*AE_index", "F107*rdist", "FootType*rdist", "FootType*AE_index"]
