@@ -1,0 +1,50 @@
+cff-version: 1.2.0
+title: Protonflux-Classification-Model
+message: "If you use this software, please cite it as below."
+type: software
+
+authors:
+  - family-names: Mischel
+    given-names: Simon
+    orcid: "https://orcid.org/YOUR-ORCID-HERE"
+
+  - family-names: Kronberg
+    given-names: Elena A.
+
+repository-code: "https://github.com/Simon060899/Protonflux-Classification-Model"
+
+license: Apache-2.0
+
+version: 1.0.1
+
+date-released: 2026-05-13
+
+abstract: >
+  Machine-learning framework for probabilistic prediction of soft proton
+  high-flux intervals relevant for SMILE SXI shutter operations using
+  Logistic Regression, XGBoost, and ensemble classification models trained
+  on Cluster/RAPID and OMNI data.
+
+keywords:
+  - SMILE
+  - soft protons
+  - space weather
+  - XGBoost
+  - logistic regression
+  - machine learning
+  - proton flux
+  - magnetosphere
+  - SXI
+
+preferred-citation:
+  type: software
+  authors:
+    - family-names: Mischel
+      given-names: Simon
+
+    - family-names: Kronberg
+      given-names: Elena A.
+
+  title: Protonflux-Classification-Model
+  version: 1.0.1
+  year: 2026
